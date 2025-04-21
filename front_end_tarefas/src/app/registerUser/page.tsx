@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import RegisterForm from '@/components/RegisterForm';
-
+import RegisterUserForm from '@/components/RegisterUserForm';
 
 
 export default function Regiter() {
@@ -12,7 +11,7 @@ export default function Regiter() {
                 <Typography variant="h4" gutterBottom>
                     Cadastro de Usuário
                 </Typography>
-                <RegisterForm />
+                <RegisterUserForm />
             </Container>
 
         </div>
