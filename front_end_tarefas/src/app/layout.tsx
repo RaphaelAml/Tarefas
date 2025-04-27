@@ -1,19 +1,11 @@
-import "./globals.css";
+import type { ReactNode } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
 
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`antialiased`}
-      >
-
-        <h1>Teste do teste</h1>
-
+    <html lang="pt-BR">
+      <body>
+        <CssBaseline />
         {children}
       </body>
     </html>

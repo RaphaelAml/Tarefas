@@ -1,9 +1,5 @@
-
+import TaskRegistration from "@/components/TaskRegistration/TaskRegistration";
 
 export default function Home() {
-  return (
-    <div>
-      <h1>Pagina Inicial</h1>
-    </div>
-  );
+  return <TaskRegistration />;
 }
