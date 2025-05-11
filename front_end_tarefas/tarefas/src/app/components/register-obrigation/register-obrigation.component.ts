@@ -1,22 +1,25 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-
-
 
 @Component({
-  selector: 'app-register-obligation',
+  selector: 'app-register-obrigation',
   standalone: true,
   imports: [
     CommonModule,
@@ -30,14 +33,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatToolbarModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
-  templateUrl: './register-obligation.component.html',
-  styleUrls: ['./register-obligation.component.css']
+  templateUrl: './register-obrigation.component.html',
+  styleUrls: ['./register-obrigation.component.css'],
 })
-export class RegisterObligationComponent {
+export class RegisterObrigationComponent {
   form: FormGroup;
-
 
   constructor(
     private fb: FormBuilder,
@@ -52,7 +54,7 @@ export class RegisterObligationComponent {
       prorroga: [false],
       statusAtivaNao: ['S'],
       departamento: ['', Validators.required],
-      vencimento: [null, Validators.required]
+      vencimento: [null, Validators.required],
     });
   }
 
@@ -67,7 +69,7 @@ export class RegisterObligationComponent {
     this.snackBar.open('Obrigação cadastrada com sucesso!', 'Fechar', {
       duration: 3000,
       horizontalPosition: 'center',
-      verticalPosition: 'top'
+      verticalPosition: 'top',
     });
 
     this.form.reset();
@@ -77,5 +79,4 @@ export class RegisterObligationComponent {
   cancelar(): void {
     this.router.navigate(['/tarefas']);
   }
-
 }

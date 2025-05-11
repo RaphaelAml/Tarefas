@@ -20,7 +20,7 @@ export const routes: Routes = [
     path: 'obrigacoes/cadastrar',
     loadComponent: () =>
       import(
-        './components/register-obligation/register-obrigation.component'
-      ).then((m) => m.RegisterObligationComponent),
+        './components/register-obrigation/register-obrigation.component'
+      ).then((m) => m.RegisterObrigationComponent),
   },
 ];
