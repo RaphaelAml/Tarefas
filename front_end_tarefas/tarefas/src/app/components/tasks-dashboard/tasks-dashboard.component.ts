@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input'
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CalendarObrigationComponent } from '../../components/calendar-obrigation/calendar-obrigation.component';
 
 
 @Component({
@@ -23,7 +24,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    CalendarObrigationComponent
   ],
   templateUrl: './tasks-dashboard.component.html',
   styleUrls: ['./tasks-dashboard.component.css']

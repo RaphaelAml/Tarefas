@@ -1,3 +1,4 @@
+/* Toolbar */
 .toolbar {
   justify-content: center;
   font-size: 20px;
@@ -8,14 +9,32 @@
   text-align: center;
 }
 
+/* Layout com calendário + tarefas lado a lado */
+.layout-tasks {
+  display: flex;
+  gap: 32px;
+  padding: 24px;
+  align-items: flex-start;
+}
+
+.calendar-column {
+  flex: 1;
+  max-width: 480px;
+}
+
+.task-column {
+  flex: 2;
+}
+
+/* Kanban */
 .kanban-board {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  padding: 32px;
   justify-content: center;
 }
 
+/* Cards de empresa */
 .empresa-coluna {
   width: 320px;
 }
@@ -24,73 +43,49 @@
   background-color: #fdfdfd;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 300px; /* sobrescrevendo largura como no novo layout */
 }
 
+/* Estilo geral de tarefa */
 .tarefa {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  padding: 8px;
   margin: 14px 0;
-  padding: 10px;
   border-radius: 8px;
+  background-color: #fff9c4;
   transition: background-color 0.3s ease;
 }
 
+/* Tarefa pendente */
 .tarefa.pendente {
   background-color: #fff3e0;
 }
 
+/* Tarefa concluída */
 .tarefa.concluido {
-  background-color: #e0f2f1;
+  background-color: #d0f0f0;
   text-decoration: line-through;
 }
 
+/* Informações da tarefa */
 .tarefa-info {
   flex: 1;
+  margin-left: 8px;
 }
 
+/* Ícones */
 mat-icon {
   font-size: 22px;
 }
 
+/* Filtros e botões */
 .filtros {
   display: flex;
   gap: 1rem;
   padding: 1rem 2rem;
   align-items: center;
-}
-
-.add-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.filtros-empresa {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tarefa-info {
-  flex: 1;
-}
-
-.tarefa {
-  background-color: #fff9c4;
-  padding: 8px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  border-radius: 6px;
-}
-
-.tarefa.concluido {
-  background-color: #d0f0f0;
-  text-decoration: line-through;
 }
 
 .filtros-empresa {
@@ -99,4 +94,12 @@ mat-icon {
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 10px;
+}
+
+/* Botão flutuante de adicionar */
+.add-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }

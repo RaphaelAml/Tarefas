@@ -1,11 +1,3 @@
-import {
-  MatRippleModule
-} from "./chunk-O27N6VLI.js";
-import {
-  MatRipple,
-  _StructuralStylesLoader
-} from "./chunk-IGU73HUW.js";
-import "./chunk-BRFZ7FOM.js";
 import "./chunk-OIBNGD5S.js";
 import {
   DomPortalOutlet,
@@ -13,12 +5,20 @@ import {
   OverlayConfig,
   OverlayModule,
   TemplatePortal
-} from "./chunk-DT23NJVN.js";
+} from "./chunk-AHJRIKDN.js";
 import {
   CdkScrollableModule
-} from "./chunk-S2YR6FTR.js";
-import "./chunk-JXBCBRYI.js";
+} from "./chunk-6GO2K2VY.js";
+import {
+  MatRippleModule
+} from "./chunk-RK26576J.js";
+import {
+  MatRipple,
+  _StructuralStylesLoader
+} from "./chunk-G5KDLAPX.js";
+import "./chunk-PKDW3PKR.js";
 import "./chunk-42FJBLFI.js";
+import "./chunk-JXBCBRYI.js";
 import "./chunk-2O4WY5GE.js";
 import {
   DOWN_ARROW,
@@ -35,18 +35,18 @@ import {
   hasModifierKey,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader
-} from "./chunk-JI4JWZT7.js";
+} from "./chunk-CU7NXQKI.js";
+import {
+  Directionality
+} from "./chunk-JFZBXNIS.js";
 import {
   _CdkPrivateStyleLoader,
   _bindEventWithOptions
-} from "./chunk-YW76CH25.js";
-import {
-  Directionality
-} from "./chunk-OI7TUO2P.js";
-import "./chunk-XXAPJIGC.js";
+} from "./chunk-WKUOIENJ.js";
+import "./chunk-SR6JHHAC.js";
 import {
   DOCUMENT
-} from "./chunk-X2SJXOWO.js";
+} from "./chunk-IY7L35EH.js";
 import {
   ANIMATION_MODULE_TYPE,
   ApplicationRef,
@@ -66,25 +66,14 @@ import {
   Output,
   QueryList,
   Renderer2,
-  Subject,
-  Subscription,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
-  __spreadProps,
-  __spreadValues,
   afterNextRender,
   booleanAttribute,
-  filter,
   inject,
-  merge,
-  of,
   setClassMetadata,
-  startWith,
-  switchMap,
-  take,
-  takeUntil,
   ɵɵProvidersFeature,
   ɵɵadvance,
   ɵɵattribute,
@@ -112,7 +101,23 @@ import {
   ɵɵrestoreView,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-II46CLKY.js";
+} from "./chunk-NIH4VIEQ.js";
+import {
+  Subject,
+  Subscription,
+  filter,
+  merge,
+  of,
+  startWith,
+  switchMap,
+  take,
+  takeUntil
+} from "./chunk-2LNI3PFH.js";
+import "./chunk-55JZBEKM.js";
+import {
+  __spreadProps,
+  __spreadValues
+} from "./chunk-WDMUDEB6.js";
 
 // node_modules/@angular/material/fesm2022/menu.mjs
 var _c0 = ["mat-menu-item", ""];

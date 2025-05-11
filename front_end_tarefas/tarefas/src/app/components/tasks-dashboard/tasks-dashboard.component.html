@@ -2,29 +2,38 @@
   <span class="toolbar-title">TAREFAS</span>
 </mat-toolbar>
 
-<!-- 🧾 Quadro Kanban de Tarefas -->
-<div class="kanban-board">
-  <div class="empresa-coluna" *ngFor="let empresa of empresas">
-    <mat-card class="empresa-card">
+<div class="layout-tasks">
 
-      <!-- 🔹 Tarefas -->
-      <mat-card-content>
-        <div class="tarefa" *ngFor="let tarefa of empresa.tarefas" [ngClass]="tarefa.status">
-          <mat-icon>
-            {{ tarefa.tipo === 'Imposto' ? 'attach_money' : 'description' }}
-          </mat-icon>
-          <div class="tarefa-info">
-            <strong>{{ tarefa.nome }}</strong><br />
-            <small>Vencimento: {{ tarefa.vencimento }}</small>
-          </div>
-          <button mat-icon-button color="primary" (click)="alternarStatus(tarefa)"
-            [title]="tarefa.status === 'pendente' ? 'Concluir tarefa' : 'Desfazer conclusão'">
-            <mat-icon>{{
-              tarefa.status === 'concluido' ? 'undo' : 'check_circle'
-              }}</mat-icon>
-          </button>
-        </div>
-      </mat-card-content>
-    </mat-card>
+  <!-- 🧾 Coluna das Tarefas (Kanban) -->
+  <div class="task-column">
+    <div class="kanban-board">
+      <div class="empresa-coluna" *ngFor="let empresa of empresas">
+        <mat-card class="empresa-card">
+          <!-- 🔹 Tarefas -->
+          <mat-card-content>
+            <div class="tarefa" *ngFor="let tarefa of empresa.tarefas" [ngClass]="tarefa.status">
+              <mat-icon>
+                {{ tarefa.tipo === 'Imposto' ? 'attach_money' : 'description' }}
+              </mat-icon>
+              <div class="tarefa-info">
+                <strong>{{ tarefa.nome }}</strong><br />
+                <small>Vencimento: {{ tarefa.vencimento }}</small>
+              </div>
+              <button mat-icon-button color="primary" (click)="alternarStatus(tarefa)"
+                [title]="tarefa.status === 'pendente' ? 'Concluir tarefa' : 'Desfazer conclusão'">
+                <mat-icon>{{
+                  tarefa.status === 'concluido' ? 'undo' : 'check_circle'
+                  }}</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
   </div>
+
+  <div class="calendar-column">
+    <app-calendar-obrigation></app-calendar-obrigation>
+  </div>
+
 </div>
