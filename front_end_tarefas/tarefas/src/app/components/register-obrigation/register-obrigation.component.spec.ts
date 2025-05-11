@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterObligationComponent } from './register-obrigation.component';
+import { RegisterObrigationComponent } from './register-obrigation.component';
 
-describe('RegisterObligationComponent', () => {
-  let component: RegisterObligationComponent;
-  let fixture: ComponentFixture<RegisterObligationComponent>;
+describe('RegisterObrigationComponent', () => {
+  let component: RegisterObrigationComponent;
+  let fixture: ComponentFixture<RegisterObrigationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterObligationComponent],
+      imports: [RegisterObrigationComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RegisterObligationComponent);
+    fixture = TestBed.createComponent(RegisterObrigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
