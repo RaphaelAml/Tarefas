@@ -9,7 +9,15 @@ export interface Tarefa {
   dataVencimento: Date;
   status: StatusTarefa;
   visibilidade: Visibilidade;
-  statusAtivaNao: StatusAtiva;
+  statusAtivaNao: 'S' | 'N';
   usuarioId: number;
-  obrigacaoId: number;
+  obrigacaoId?: number;
+
+  // Novos campos:
+  tipoObrigacao?: 'I' | 'D';
+  esfera?: 'F' | 'E' | 'M';
+  antecipa?: boolean;
+  prorroga?: boolean;
+  departamento?: string;
 }
+

@@ -2,12 +2,9 @@
   <span class="toolbar-title">TAREFAS</span>
 </mat-toolbar>
 
-<div class="kanban-board">
-  <div
-    class="coluna"
-    *ngFor="let status of ['pendente', 'andamento', 'concluido']"
-  >
-    <mat-card class="coluna-card">
+<div class="layout-tasks">
+  <div class="kanban-board">
+    <mat-card class="kanban-column" *ngFor="let status of ['pendente', 'andamento', 'concluido']">
       <mat-card-header>
         <mat-card-title>{{ status | uppercase }}</mat-card-title>
       </mat-card-header>
@@ -19,27 +16,45 @@
           [ngClass]="status"
         >
           <mat-icon>
-            {{ tarefa.obrigacaoId ? "attach_money" : "description" }}
+            {{ tarefa.tipoObrigacao === 'I' ? 'attach_money' : 'description' }}
           </mat-icon>
+
           <div class="tarefa-info">
-            <strong>{{ tarefa.titulo }}</strong
-            ><br />
-            <small>Vencimento: {{ tarefa.vencimento }}</small>
+            <strong>{{ tarefa.titulo }}</strong><br />
+            <small>Vencimento: {{ tarefa.vencimento }}</small><br />
+            <small>Departamento: {{ tarefa.departamento }}</small><br />
+            <small>Tipo: {{ tarefa.tipoObrigacao === 'I' ? 'Imposto' : 'Declaração' }}</small><br />
+            <small>Esfera: {{
+              tarefa.esfera === 'F' ? 'Federal' :
+              tarefa.esfera === 'E' ? 'Estadual' :
+              tarefa.esfera === 'M' ? 'Municipal' : ''
+            }}</small><br />
+            <small>Antecipação: {{ tarefa.antecipa ? 'Sim' : 'Não' }}</small><br />
+            <small>Prorrogação: {{ tarefa.prorroga ? 'Sim' : 'Não' }}</small>
           </div>
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="alternarStatus(tarefa)"
-            [title]="
-              status === 'pendente' ? 'Concluir tarefa' : 'Desfazer conclusão'
-            "
-          >
-            <mat-icon>{{
-              status === "concluido" ? "undo" : "check_circle"
-            }}</mat-icon>
+
+          <!-- ✅ Botão do menu -->
+          <button mat-icon-button [matMenuTriggerFor]="menu" (click)="tarefaSelecionada = tarefa">
+            <mat-icon>more_vert</mat-icon>
           </button>
         </div>
       </mat-card-content>
     </mat-card>
   </div>
+
+  <!-- ✅ Menu compartilhado -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="atualizarStatus(tarefaSelecionada, 'pendente')">
+      <mat-icon>hourglass_empty</mat-icon>
+      <span>Marcar como Pendente</span>
+    </button>
+    <button mat-menu-item (click)="atualizarStatus(tarefaSelecionada, 'andamento')">
+      <mat-icon>autorenew</mat-icon>
+      <span>Marcar como Andamento</span>
+    </button>
+    <button mat-menu-item (click)="atualizarStatus(tarefaSelecionada, 'concluido')">
+      <mat-icon>check_circle</mat-icon>
+      <span>Marcar como Concluído</span>
+    </button>
+  </mat-menu>
 </div>

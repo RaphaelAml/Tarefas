@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {FormBuilder,FormGroup,ReactiveFormsModule,Validators,} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -15,6 +15,9 @@ import { Esfera } from '../../models/obrigacao/esfera.enum';
 import { StatusAtiva } from '../../models/obrigacao/status-ativa.enum';
 import { TipoObrigacao } from '../../models/obrigacao/tipo-obrigacao.enum';
 import { ObrigacaoService } from '../../services/obrigacao.service';
+import { TarefaService } from '../../services/tarefa.service';
+import { StatusTarefa } from '../../models/tarefa/status-tarefa.enum';
+import { Visibilidade } from '../../models/tarefa/visibilidade.enum';
 
 
 
@@ -43,7 +46,8 @@ export class RegisterObrigationComponent {
 
   constructor(
     private fb: FormBuilder,
-    private obrigacaoService: ObrigacaoService
+    private obrigacaoService: ObrigacaoService,
+    private tarefaService: TarefaService
   ) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
@@ -71,7 +75,28 @@ export class RegisterObrigationComponent {
         usuarioId: 1,
       };
 
-      this.obrigacaoService.criarObrigacao(novaObrigacao);
+      const obrigacaoCriada = this.obrigacaoService.criarObrigacao(novaObrigacao);
+
+
+      // Criação automática da tarefa com base na obrigação
+      this.tarefaService.criarTarefa({
+        titulo: formValue.nome,
+        descricao: `Tarefa da obrigação: ${formValue.nome}`,
+        dataVencimento: formValue.vencimento,
+        status: StatusTarefa.P,
+        visibilidade: Visibilidade.C,
+        statusAtivaNao: formValue.statusAtivaNao,
+        usuarioId: 1,
+        obrigacaoId: obrigacaoCriada.id,
+        tipoObrigacao: formValue.tipoObrigacao,
+        esfera: formValue.esfera,
+        antecipa: formValue.antecipa,
+        prorroga: formValue.prorroga,
+        departamento: formValue.departamento,
+      });
+
+
+
       this.form.reset();
     }
   }

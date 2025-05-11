@@ -38,3 +38,13 @@
     margin-top: 16px;
   }
   
+  mat-form-field {
+    overflow: visible; 
+    z-index: 10;         
+    margin-bottom: 14px; 
+    width: 100%;          
+  }
+  
+
+  
+ 

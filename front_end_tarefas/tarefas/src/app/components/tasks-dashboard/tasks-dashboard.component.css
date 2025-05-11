@@ -9,18 +9,6 @@
   text-align: center;
 }
 
-/* Layout com calendário + tarefas lado a lado */
-.layout-tasks {
-  display: flex;
-  gap: 32px;
-  padding: 24px;
-  align-items: flex-start;
-}
-
-.calendar-column {
-  flex: 1;
-  max-width: 480px;
-}
 
 .task-column {
   flex: 2;
@@ -102,4 +90,12 @@ mat-icon {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+}
+
+.kanban-column {
+  width: 320px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 8px;
 }

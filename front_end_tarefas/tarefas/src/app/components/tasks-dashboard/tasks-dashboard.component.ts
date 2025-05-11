@@ -12,6 +12,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { StatusTarefa } from '../../models/tarefa/status-tarefa.enum';
 import { TarefaService } from '../../services/tarefa.service';
 import { FilterByStatusPipe } from './components/filterByStatus';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 
 @Component({
   selector: 'app-tasks-dashboard',
@@ -28,12 +31,14 @@ import { FilterByStatusPipe } from './components/filterByStatus';
     MatInputModule,
     MatDialogModule,
     FilterByStatusPipe,
-  ],
+    MatMenuModule
+],
   templateUrl: './tasks-dashboard.component.html',
   styleUrls: ['./tasks-dashboard.component.css'],
 })
 export class TasksDashboardComponent implements OnInit {
   tarefas: any[] = [];
+  tarefaSelecionada: any = null;
 
   constructor(private tarefaService: TarefaService) {}
 
@@ -59,6 +64,22 @@ export class TasksDashboardComponent implements OnInit {
     this.tarefaService.atualizarTarefa(tarefa.id, { status: novoStatus });
   }
 
+  atualizarStatus(tarefa: any, novoStatus: 'pendente' | 'andamento' | 'concluido') {
+    const statusMap = {
+      pendente: StatusTarefa.P,
+      andamento: StatusTarefa.A,
+      concluido: StatusTarefa.C,
+    };
+  
+    this.tarefaService.atualizarTarefa(tarefa.id, {
+      status: statusMap[novoStatus],
+    });
+  
+    this.carregarTarefas();
+  }
+  
+  
+
   private mapearStatus(status: StatusTarefa): string {
     return {
       [StatusTarefa.C]: 'concluido',
@@ -67,50 +88,3 @@ export class TasksDashboardComponent implements OnInit {
     }[status];
   }
 }
-// export class TasksDashboardComponent {
-
-//   constructor(private dialog: MatDialog) {}
-
-//   meses: string[] = [
-//     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
-//     'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
-//     'Novembro', 'Dezembro'
-//   ];
-
-//   mesSelecionado: string = 'Maio';
-//   anoSelecionado: number = new Date().getFullYear();
-
-//   empresas = [
-//     {
-//       nome: 'Empresa A',
-//       tarefas: [
-//         { nome: 'DCTF', vencimento: '10/05', tipo: 'Declaração', status: 'pendente' },
-//         { nome: 'ICMS', vencimento: '15/05', tipo: 'Imposto', status: 'pendente' },
-//         { nome: 'IRPJ', vencimento: '20/05', tipo: 'Imposto', status: 'concluido' },
-//         { nome: 'DCTF', vencimento: '10/05', tipo: 'Declaração', status: 'pendente' },
-//         { nome: 'ICMS', vencimento: '15/05', tipo: 'Imposto', status: 'pendente' },
-//         { nome: 'IRPJ', vencimento: '20/05', tipo: 'Imposto', status: 'concluido' },
-//       ]
-//     },
-//     {
-//       nome: 'Empresa B',
-//       tarefas: [
-//         { nome: 'ISS', vencimento: '12/05', tipo: 'Imposto', status: 'pendente' },
-//         { nome: 'SPED Contribuições', vencimento: '20/05', tipo: 'Declaração', status: 'concluido' },
-//         { nome: 'DAS', vencimento: '25/05', tipo: 'Imposto', status: 'pendente' },
-//         { nome: 'DCTF', vencimento: '10/05', tipo: 'Declaração', status: 'pendente' },
-//         { nome: 'ICMS', vencimento: '15/05', tipo: 'Imposto', status: 'pendente' },
-//         { nome: 'IRPJ', vencimento: '20/05', tipo: 'Imposto', status: 'concluido' },
-//       ]
-//     }
-//   ];
-
-//   marcarComoConcluido(tarefa: any) {
-//     tarefa.status = 'concluido';
-//   }
-
-//   alternarStatus(tarefa: any) {
-//     tarefa.status = tarefa.status === 'concluido' ? 'pendente' : 'concluido';
-//   }
-
-// }
