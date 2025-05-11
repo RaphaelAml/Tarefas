@@ -1,46 +1,46 @@
 <mat-toolbar class="app-toolbar">
-    <span class="logo">Sistema de Tarefas</span>
-    <span class="spacer"></span>
-  
-    <button mat-button routerLink="/cadastrar" routerLinkActive="active-link">
-      <mat-icon>person_add</mat-icon>
-      Usuários
-    </button>
-    <button mat-button routerLink="/tarefas" routerLinkActive="active-link">
-      <mat-icon>assignment</mat-icon>
-      Tarefas
-    </button>
-    <button mat-button routerLink="/obrigacoes/cadastrar" routerLinkActive="active-link">
-      <mat-icon>gavel</mat-icon>
-      Obrigações
-    </button>
-  
-    <span class="user-info">
-      <mat-icon>apartment</mat-icon> {{ user.departamento }} |
-      <mat-icon>person</mat-icon> {{ user.nome }}
-    </span>
-  
-    <button mat-icon-button [matMenuTriggerFor]="userMenu">
-      <img [src]="user.avatarUrl" class="avatar" />
-    </button>
-  
-    <mat-menu #userMenu="matMenu">
-      <button mat-menu-item disabled>
-        <mat-icon>account_circle</mat-icon>
-        <span>{{ user.nome }}</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>work</mat-icon>
-        <span>{{ user.departamento }}</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>
-        <mat-icon>logout</mat-icon>
-        <span>Sair</span>
-      </button>
-    </mat-menu>
+  <span class="logo">Sistema de Tarefas</span>
+  <span class="spacer"></span>
 
-    
-  </mat-toolbar>
-  
-  
+  <button mat-button routerLink="/cadastrar" routerLinkActive="active-link">
+    <mat-icon>person_add</mat-icon>
+    Usuários
+  </button>
+  <button mat-button routerLink="/tarefas" routerLinkActive="active-link">
+    <mat-icon>assignment</mat-icon>
+    Tarefas
+  </button>
+  <button
+    mat-button
+    routerLink="/obrigacoes/cadastrar"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>gavel</mat-icon>
+    Obrigações
+  </button>
+
+  <span class="user-info" *ngIf="user">
+    <mat-icon>apartment</mat-icon> {{ getDepartamento() }} |
+    <mat-icon>person</mat-icon> {{ user.nome }}
+  </span>
+
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="user">
+    <img [src]="user.fotoPerfil || 'https://i.pravatar.cc/40'" class="avatar" />
+  </button>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item disabled *ngIf="user">
+      <mat-icon>account_circle</mat-icon>
+      <span>{{ user.nome }}</span>
+    </button>
+    <button mat-menu-item disabled *ngIf="user">
+      <mat-icon>work</mat-icon>
+      <span>{{ getDepartamento() }}</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
