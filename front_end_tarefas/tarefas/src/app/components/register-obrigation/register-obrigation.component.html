@@ -1,0 +1,74 @@
+<mat-toolbar color="primary" class="toolbar">
+    <span class="toolbar-title">Cadastro de Obrigação Fiscal</span>
+</mat-toolbar>
+
+
+<div class="form-container">
+    <mat-card>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nome da Obrigação</mat-label>
+                <input matInput formControlName="nome" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Departamento Responsável</mat-label>
+                <mat-select formControlName="departamento">
+                    <mat-option value="Fiscal">Fiscal</mat-option>
+                    <mat-option value="Jurídico">Jurídico</mat-option>
+                    <mat-option value="Contábil">Contábil</mat-option>
+                    <mat-option value="RH">RH</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Tipo</mat-label>
+                <mat-select formControlName="tipoObrigacao">
+                    <mat-option value="I">Imposto</mat-option>
+                    <mat-option value="D">Declaração</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Esfera</mat-label>
+                <mat-select formControlName="esfera">
+                    <mat-option value="F">Federal</mat-option>
+                    <mat-option value="E">Estadual</mat-option>
+                    <mat-option value="M">Municipal</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Data de Vencimento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="vencimento" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+
+            <mat-checkbox formControlName="antecipa">Antecipa?</mat-checkbox>
+            <mat-checkbox formControlName="prorroga">Prorroga?</mat-checkbox>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Está ativa?</mat-label>
+                <mat-select formControlName="statusAtivaNao">
+                    <mat-option value="S">Sim</mat-option>
+                    <mat-option value="N">Não</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="button-container">
+                <button mat-raised-button color="primary" type="submit">
+                    Cadastrar
+                </button>
+                <button mat-raised-button color="warn" type="button" (click)="cancelar()">
+                    Cancelar
+                </button>
+            </div>
+
+
+        </form>
+    </mat-card>
+</div>
