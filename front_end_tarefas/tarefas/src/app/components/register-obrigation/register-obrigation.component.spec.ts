@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterObligationComponent } from './register-obligation.component';
+import { RegisterObligationComponent } from './register-obrigation.component';
 
 describe('RegisterObligationComponent', () => {
   let component: RegisterObligationComponent;
@@ -8,9 +8,8 @@ describe('RegisterObligationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterObligationComponent]
-    })
-    .compileComponents();
+      imports: [RegisterObligationComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterObligationComponent);
     component = fixture.componentInstance;
