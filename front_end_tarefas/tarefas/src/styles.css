@@ -1,0 +1,35 @@
+/* Fundo global azul claro */
+body {
+    font-family: Roboto, sans-serif;
+    background-color: #e3eaf0; /* azul claro */
+    color: #111;
+    margin: 0;
+  }
+  
+  /* Cabeçalho verde claro */
+  .app-toolbar {
+    background-color: #9da499 !important; /* verde claro vibrante */
+    color: #111 !important;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+  }
+  
+  
+  /* Botões no cabeçalho */
+  .app-toolbar .nav-buttons button {
+    background: none;
+    border: none;
+    color: #111;
+    font-weight: 500;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .app-toolbar .nav-buttons button:hover {
+    text-decoration: underline;
+  }
+  
