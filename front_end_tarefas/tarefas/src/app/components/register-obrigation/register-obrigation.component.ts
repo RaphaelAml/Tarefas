@@ -9,9 +9,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router } from '@angular/router';
+import { Esfera } from '../../models/obrigacao/esfera.enum';
+import { StatusAtiva } from '../../models/obrigacao/status-ativa.enum';
+import { TipoObrigacao } from '../../models/obrigacao/tipo-obrigacao.enum';
+import { ObrigacaoService } from '../../services/obrigacao.service';
 
 
 
@@ -40,40 +43,40 @@ export class RegisterObrigationComponent {
 
   constructor(
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,
-    private router: Router
+    private obrigacaoService: ObrigacaoService
   ) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
+      departamento: ['', Validators.required],
       tipoObrigacao: ['', Validators.required],
       esfera: ['', Validators.required],
+      vencimento: [null, Validators.required],
       antecipa: [false],
       prorroga: [false],
-      statusAtivaNao: ['S'],
-      departamento: ['', Validators.required],
-      vencimento: [null, Validators.required],
+      statusAtivaNao: ['', Validators.required],
     });
   }
 
-  onSubmit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
+  onSubmit() {
+    if (this.form.valid) {
+      const formValue = this.form.value;
+
+      const novaObrigacao = {
+        nome: formValue.nome,
+        tipoObrigacao: formValue.tipoObrigacao as TipoObrigacao,
+        esfera: formValue.esfera as Esfera,
+        antecipa: formValue.antecipa,
+        prorroga: formValue.prorroga,
+        statusAtivaNao: formValue.statusAtivaNao as StatusAtiva,
+        usuarioId: 1,
+      };
+
+      this.obrigacaoService.criarObrigacao(novaObrigacao);
+      this.form.reset();
     }
-
-    console.log('Obrigação cadastrada:', this.form.value);
-
-    this.snackBar.open('Obrigação cadastrada com sucesso!', 'Fechar', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
-
-    this.form.reset();
-    this.router.navigate(['/tarefas']);
   }
 
-  cancelar(): void {
-    this.router.navigate(['/tarefas']);
+  cancelar() {
+    this.form.reset();
   }
 }

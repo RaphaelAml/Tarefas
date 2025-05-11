@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-register-user',
@@ -27,55 +29,42 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatProgressSpinnerModule
-
+    MatProgressSpinnerModule,
   ],
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  styleUrls: ['./register-user.component.css'],
 })
-
-
 export class RegisterUserComponent {
-togglePasswordVisibility() {
-throw new Error('Method not implemented.');
-}
   form: FormGroup;
+  hidePassword = true;
   loading = false;
-hidePassword: any;
 
-
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService) {
     this.form = this.fb.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', Validators.required],
-      genero: ['M'],
-      tipoUsuario: ['CL'],
+      genero: ['', Validators.required],
+      tipoUsuario: ['', Validators.required],
     });
   }
-  
-  onSubmit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched(); // ativa mensagens
-      return;
-    }
-  
-    this.loading = true;
-  
-    setTimeout(() => {
-      this.loading = false;
-  
-      // Simula sucesso
-      this.snackBar.open('Usuário cadastrado com sucesso!', 'Fechar', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top'
+
+  onSubmit() {
+    if (this.form.valid) {
+      this.loading = true;
+      const newUser = this.form.value;
+
+      this.usuarioService.criarUsuario({
+        ...newUser,
+        fotoPerfil: '', // lógica de upload
       });
-  
+
+      this.loading = false;
       this.form.reset();
-    }, 1500); // simula chamada de API
+    }
   }
-  
 
-
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
 }

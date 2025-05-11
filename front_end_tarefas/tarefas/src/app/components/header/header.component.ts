@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { Usuario } from '../../models/usuario/usuario.model';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-header',
@@ -17,17 +19,36 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  user = {
-    nome: 'Raphael',
-    departamento: 'Fiscal',
-    avatarUrl: 'https://i.pravatar.cc/40?img=3' // pode trocar por sua imagem real
-  };
+export class HeaderComponent implements OnInit {
+  user?: Usuario;
+
+  constructor(private usuarioService: UsuarioService) {}
+
+  ngOnInit() {
+    this.carregarUsuario();
+  }
+
+  private carregarUsuario() {
+    this.usuarioService.getUsuario(1).subscribe((usuario) => {
+      if (usuario) {
+        this.user = usuario;
+      }
+    });
+  }
+
+  getDepartamento(): string {
+    if (!this.user) return '';
+    return (
+      {
+        C: 'Cliente',
+        A: 'Administrador',
+        CL: 'Contador',
+      }[this.user.tipoUsuario] || ''
+    );
+  }
 }
-
-
