@@ -1,4 +1,4 @@
-Sistema voltado com atenção para escritorio contabil que está sendo desenvolvido para ajudar no controle e melhor visualização das tarefas de cada departamento que será utilizado como ferramenta para os colaboradores possam cadastrar suas obrigações mesais, ajudando os socios a visualizar de maneira detalhada e fácil como cada deparamento entrega suas tarefas. 
+Sistema voltado com atenção aos escritorios contabeis que está sendo desenvolvido para ajudar no controle e melhor visualização das tarefas de cada departamento que será utilizado como ferramenta para os colaboradores possam cadastrar suas obrigações mesais, ajudando os socios a visualizar de maneira detalhada e fácil como cada deparamento entrega suas tarefas. 
 
 
 Modelagem - Diagrama de Classe.
