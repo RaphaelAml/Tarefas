@@ -56,7 +56,7 @@ export class RegisterUserComponent {
 
       this.usuarioService.criarUsuario({
         ...newUser,
-        fotoPerfil: '', // lógica de upload
+        fotoPerfil: '', 
       });
 
       this.loading = false;

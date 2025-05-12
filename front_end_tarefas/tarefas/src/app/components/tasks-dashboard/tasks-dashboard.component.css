@@ -31,7 +31,7 @@
   background-color: #fdfdfd;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  width: 300px; /* sobrescrevendo largura como no novo layout */
+  width: 300px; 
 }
 
 /* Estilo geral de tarefa */

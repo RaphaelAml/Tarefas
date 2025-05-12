@@ -33,7 +33,7 @@
             <small>Prorrogação: {{ tarefa.prorroga ? 'Sim' : 'Não' }}</small>
           </div>
 
-          <!-- ✅ Botão do menu -->
+          <!-- Botão do menu -->
           <button mat-icon-button [matMenuTriggerFor]="menu" (click)="tarefaSelecionada = tarefa">
             <mat-icon>more_vert</mat-icon>
           </button>
@@ -42,7 +42,7 @@
     </mat-card>
   </div>
 
-  <!-- ✅ Menu compartilhado -->
+  <!--  Menu  -->
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="atualizarStatus(tarefaSelecionada, 'pendente')">
       <mat-icon>hourglass_empty</mat-icon>

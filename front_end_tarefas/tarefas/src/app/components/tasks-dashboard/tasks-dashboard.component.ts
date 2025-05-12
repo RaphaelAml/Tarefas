@@ -47,7 +47,8 @@ export class TasksDashboardComponent implements OnInit {
   }
 
   private carregarTarefas() {
-    // Substituir 1 pelo ID do usuário logado
+
+    // Substitue 1 pelo ID do usuario logado
     this.tarefaService.getTarefasByUsuario(1).subscribe((tarefas) => {
       this.tarefas = tarefas.map((t) => ({
         ...t,
