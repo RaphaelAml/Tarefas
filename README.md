@@ -1,63 +1,22 @@
-# Tarefas
+Sistema voltado com atenção aos escritorios contabeis que está sendo desenvolvido para ajudar no controle e melhor visualização das tarefas de cada departamento que será utilizado como ferramenta para os colaboradores possam cadastrar suas obrigações mesais, ajudando os socios a visualizar de maneira detalhada e fácil como cada deparamento entrega suas tarefas. 
 
-Projeto para atender a demanda de controle de tarefas a serem compridas, como vencimento de impostos, declaraçoes mensais e outras atividades internas dentro de um escritorio.
 
-# Angular
+Modelagem - Diagrama de Classe.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+![image](https://github.com/user-attachments/assets/beb25f85-7588-4691-b5db-05acd1f12e27)
 
-## Development server
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Modelagem - Banco de Dados.
 
-## Code scaffolding
+![image](https://github.com/user-attachments/assets/b641a306-35c3-42d4-8b94-e5f1c306a4b2)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+Print prototipo telas.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+![image](https://github.com/user-attachments/assets/c817df37-5093-4f02-a889-ad1fd172c1e0)
 
-```bash
-ng generate --help
-```
+![image](https://github.com/user-attachments/assets/fb8fb56b-5727-4cf1-8066-6ce688455dbf)
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![image](https://github.com/user-attachments/assets/d773565d-51bf-46f1-aa56-ea477ede2030)
