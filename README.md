@@ -3,7 +3,8 @@ Sistema voltado com atenção aos escritorios contabeis que está sendo desenvol
 
 Modelagem - Diagrama de Classe.
 
-![image](https://github.com/user-attachments/assets/beb25f85-7588-4691-b5db-05acd1f12e27)
+![image](https://github.com/user-attachments/assets/27531be9-e68c-4d6a-a4e6-2bbee5c4678c)
+
 
 
 
