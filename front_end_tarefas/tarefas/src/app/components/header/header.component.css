@@ -1,8 +1,11 @@
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.app-toolbar {
+  background: linear-gradient(90deg, #8ab7d5 0%, #8ab7d5 100%);
+  color: #111;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 12px 0 rgba(50, 50, 50, 0.05);
+  padding-right: 16px;
+}
+
   
   .logo {
     font-weight: bold;

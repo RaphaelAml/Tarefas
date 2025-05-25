@@ -1,4 +1,5 @@
 <mat-toolbar class="app-toolbar">
+
   <span class="logo">Sistema de Tarefas</span>
   <span class="spacer"></span>
 
@@ -6,10 +7,12 @@
     <mat-icon>person_add</mat-icon>
     Usuários
   </button>
+
   <button mat-button routerLink="/tarefas" routerLinkActive="active-link">
     <mat-icon>assignment</mat-icon>
     Tarefas
   </button>
+
   <button
     mat-button
     routerLink="/obrigacoes/cadastrar"
@@ -29,18 +32,16 @@
   </button>
 
   <mat-menu #userMenu="matMenu">
+
     <button mat-menu-item disabled *ngIf="user">
       <mat-icon>account_circle</mat-icon>
       <span>{{ user.nome }}</span>
     </button>
+
     <button mat-menu-item disabled *ngIf="user">
       <mat-icon>work</mat-icon>
       <span>{{ getDepartamento() }}</span>
     </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item>
-      <mat-icon>logout</mat-icon>
-      <span>Sair</span>
-    </button>
+
   </mat-menu>
 </mat-toolbar>
