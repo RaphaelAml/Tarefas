@@ -18,6 +18,10 @@ import { ObrigacaoService } from '../../services/obrigacao.service';
 import { TarefaService } from '../../services/tarefa.service';
 import { StatusTarefa } from '../../models/tarefa/status-tarefa.enum';
 import { Visibilidade } from '../../models/tarefa/visibilidade.enum';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 
 
@@ -37,6 +41,8 @@ import { Visibilidade } from '../../models/tarefa/visibilidade.enum';
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDividerModule,
+    MatIconModule
   ],
   templateUrl: './register-obrigation.component.html',
   styleUrls: ['./register-obrigation.component.css'],
