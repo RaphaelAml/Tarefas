@@ -25,6 +25,7 @@ import { UsuarioService } from '../../services/usuario.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+[x: string]: any;
   user?: Usuario;
 
   constructor(private usuarioService: UsuarioService) {}
@@ -47,7 +48,7 @@ export class HeaderComponent implements OnInit {
       {
         C: 'Cliente',
         A: 'Administrador',
-        CL: 'Contador',
+        CO: 'Contador',
       }[this.user.tipoUsuario] || ''
     );
   }

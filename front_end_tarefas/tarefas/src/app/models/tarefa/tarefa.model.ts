@@ -1,4 +1,3 @@
-import { StatusAtiva } from '../obrigacao/status-ativa.enum';
 import { StatusTarefa } from './status-tarefa.enum';
 import { Visibilidade } from './visibilidade.enum';
 
@@ -13,7 +12,7 @@ export interface Tarefa {
   usuarioId: number;
   obrigacaoId?: number;
 
-  // Novos campos:
+
   tipoObrigacao?: 'I' | 'D';
   esfera?: 'F' | 'E' | 'M';
   antecipa?: boolean;

@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
         useFactory: adapterFactory,
       })
     ),
-    { provide: LOCALE_ID, useValue: 'pt-BR' } // 👈 adicione essa linha
+    { provide: LOCALE_ID, useValue: 'pt-BR' } 
   ]
 };

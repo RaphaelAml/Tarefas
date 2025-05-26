@@ -1,72 +1,112 @@
-<h1 class="page-title">Cadastro de Usuário</h1>
-
 
 <div class="form-container">
-  <mat-card>
-    <mat-card-title>Cadastro de Usuário</mat-card-title>
+  <mat-card class="custom-card">
+    <!-- Avatar e Botão Flutuante -->
+    <div class="avatar-section">
+      <img
+        [src]=""
+        class="avatar-large"
+      />
+      <button mat-mini-fab color="primary" class="avatar-btn" (click)="triggerFileInput()" matTooltip="Inserir foto">
+        <mat-icon>photo_camera</mat-icon>
+      </button>
+      <input
+        type="file"
+        accept="image/*"
+        id="fileInput"
+        (change)="onFileSelected($event)"
+        hidden
+      />
+    </div>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
-      <!-- Nome -->
-      <mat-form-field appearance="fill">
-        <mat-label>Nome</mat-label>
-        <input matInput formControlName="nome" />
-        <mat-error *ngIf="form.get('nome')?.hasError('required') && form.get('nome')?.touched">
-          Nome é obrigatório
-        </mat-error>
-      </mat-form-field>
+    <mat-card-title class="title-center">Cadastro de Usuário</mat-card-title>
+    <mat-divider class="mat-divider-margin"></mat-divider>
 
-      <!-- Email -->
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" type="email" />
-        <mat-error *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
-          Email é obrigatório
-        </mat-error>
-        <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
-          Email inválido
-        </mat-error>
-      </mat-form-field>
+    <!-- Formulário em Grid 2 colunas -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid" autocomplete="off">
+      <div class="form-fields">
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" />
+          <mat-error *ngIf="form.get('nome')?.hasError('required') && form.get('nome')?.touched">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
 
-      <!-- Senha -->
-      <mat-form-field appearance="fill">
-        <mat-label>Senha</mat-label>
-        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha">
-        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
-          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-        </button>
-        <mat-error *ngIf="form.get('senha')?.hasError('required') && form.get('senha')?.touched">
-          Senha é obrigatória
-        </mat-error>
-      </mat-form-field>
-      
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>email</mat-icon>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+          <mat-error *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
+            Email é obrigatório
+          </mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
+            Email inválido
+          </mat-error>
+        </mat-form-field>
 
-      <!-- Gênero -->
-      <mat-form-field appearance="fill">
-        <mat-label>Gênero</mat-label>
-        <mat-select formControlName="genero">
-          <mat-option value="M">Masculino</mat-option>
-          <mat-option value="F">Feminino</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>wc</mat-icon>
+          <mat-label>Gênero</mat-label>
+          <mat-select formControlName="genero">
+            <mat-option value="M">Masculino</mat-option>
+            <mat-option value="F">Feminino</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <!-- Tipo de Usuário -->
-      <mat-form-field appearance="fill">
-        <mat-label>Tipo de Usuário</mat-label>
-        <mat-select formControlName="tipoUsuario">
-          <mat-option value="C">Cliente</mat-option>
-          <mat-option value="A">Administrador</mat-option>
-          <mat-option value="CL">Contador</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>badge</mat-icon>
+          <mat-label>Tipo de Usuário</mat-label>
+          <mat-select formControlName="tipoUsuario">
+            <mat-option value="C">Cliente</mat-option>
+            <mat-option value="A">Administrador</mat-option>
+            <mat-option value="CO">Colaborador</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-      <!-- Botão -->
-      <div class="button-container">
-        <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+      <div class="photo-fields">
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha" />
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button" [attr.aria-label]="'Mostrar/ocultar senha'">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.get('senha')?.hasError('required') && form.get('senha')?.touched">
+            Senha é obrigatória
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-label>Repetir senha</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="confirmarSenha" />
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button" [attr.aria-label]="'Mostrar/ocultar senha'">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.get('confirmarSenha')?.hasError('required') && form.get('confirmarSenha')?.touched">
+            Confirmação obrigatória
+          </mat-error>
+          <mat-error *ngIf="form.hasError('senhasDiferentes') && form.get('confirmarSenha')?.touched">
+            As senhas não coincidem
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-container full-width">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loading || form.invalid">
           <mat-icon *ngIf="!loading">person_add</mat-icon>
           <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
           <span *ngIf="!loading">Cadastrar</span>
         </button>
-      </div>          
+        <button mat-raised-button color="warn" type="button" (click)="onCancel()" [disabled]="loading">
+          <mat-icon>cancel</mat-icon>
+          Cancelar
+        </button>
+      </div>
+      
     </form>
   </mat-card>
 </div>
