@@ -14,7 +14,7 @@ Modelagem - Banco de Dados.
 ![image](https://github.com/user-attachments/assets/b641a306-35c3-42d4-8b94-e5f1c306a4b2)
 
 
-Print prototipo telas.
+Print prototipo telas..
 
 ![image](https://github.com/user-attachments/assets/0d88b747-043c-407b-8db3-acf4f57ec9e1)
 
